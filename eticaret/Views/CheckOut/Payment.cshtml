@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- BANNER STRAT -->
+<div class="banner inner-banner align-center">
+    <div class="container">
+        <section class="banner-detail">
+            <h1 class="banner-title">Siparişlerim</h1>
+            <div class="bread-crumb right-side">
+                <ul>
+                    <li><a href="/">Anasayfa</a>/</li>
+                    <li><span>Sipariş Tamamlama</span></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<section class="checkout-section ptb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="checkout-step mb-40">
+                    <ul>
+                        <li class="active">
+                            <a href="/hesap-onay">
+                                <div class="step">
+                                    <div class="line"></div>
+                                    <div class="circle">1</div>
+                                </div>
+                                <span>Hesap Bilgileri Onaylama</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="/siparis-ozet">
+                                <div class="step">
+                                    <div class="line"></div>
+                                    <div class="circle">2</div>
+                                </div>
+                                <span>Sipariş Özeti</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="/odeme">
+                                <div class="step">
+                                    <div class="line"></div>
+                                    <div class="circle">3</div>
+                                </div>
+                                <span>Ödeme</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/siparis-onay">
+                                <div class="step">
+                                    <div class="line"></div>
+                                    <div class="circle">4</div>
+                                </div>
+                                <span>Sipariş Tamamlama</span>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="step">
+                                <div class="line"></div>
+                            </div>
+                        </li>
+                    </ul>
+                    <hr>
+                </div>
+                <div class="checkout-content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="heading-part align-center">
+                                <h2 class="heading">Bir ödeme yöntemi seçin</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-8 col-sm-8 col-lg-offset-3 col-sm-offset-2">
+                            <div class="payment-option-box mb-30">
+                                <div class="payment-option-box-inner gray-bg">
+                                    <div class="payment-top-box">
+                                        <div class="radio-box left-side">
+                                            <span>
+                                                <input type="radio" id="paypal" value="paypal" name="payment_type">
+                                            </span>
+                                            <label for="paypal">Kredi Kartı</label>
+                                        </div>
+                                        <div class="paypal-box">
+                                            <div class="paypal-img"> <img src="~/Content/images/payment-method.png" alt="MarketShop"></div>
+                                        </div>
+                                    </div>
+                                    <p>If you Don't have CCAvenue Account, it doesn,t matter. You can also pay via CCAvenue with you credit card or bank debit card</p>
+                                    <p>Payment can be submitted in any currency.</p>
+                                </div>
+                            </div>
+                            <div class="payment-option-box mb-30">
+                                <div class="payment-option-box-inner gray-bg">
+                                    <div class="payment-top-box">
+                                        <div class="radio-box left-side">
+                                            <span>
+                                                <input type="radio" id="cash" value="cash" name="payment_type">
+                                            </span>
+                                            <label for="cash">Kapıda Ödeme</label>
+                                        </div>
+                                    </div>
+                                    <p>Vestibulum semper accumsan nisi, at blandit tortor maxi'mus in phasellus malesuada sodales odio, at dapibus libero malesuada quis.</p>
+                                </div>
+                            </div>
+                            <div class="right-side float-none-xs"> <a class="btn btn-black" href="/siparis-onay">Siparişi Tamamla<span><i class="fa fa-angle-right"></i></span></a> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

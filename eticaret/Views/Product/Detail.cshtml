@@ -1,0 +1,108 @@
+﻿
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Products
+
+@Html.Partial("~/Views/Product/Banner.cshtml")
+
+
+@{
+    if (HttpContext.Current.Application["PageCounter_"+Model.ID]==null)
+    {
+        HttpContext.Current.Application["PageCounter_" + Model.ID] = 1;
+    }
+    else
+    {
+        HttpContext.Current.Application["PageCounter_" + Model.ID] = Convert.ToInt32(HttpContext.Current.Application["PageCounter_" + Model.ID]) + 1;
+    }
+}
+
+<style>
+  @if (Model.UnitsInStock == 0)
+  {
+        @Html.Raw(".fotorama__stage img{ opacity:0.3!important }")
+    }
+</style>
+<section class="pt-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-sm-5 mb-xs-30">
+                <div class="fotorama" data-nav="thumbs" data-allowfullscreen="native"><img src="@Model.Photo"></div>
+            </div>
+            <div class="col-md-7 col-sm-7">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="product-detail-main">
+                            <div class="product-item-details">
+                                <h1 class="product-item-name">@Model.Name</h1>
+                                <div class="price-box"> <span class="price">@string.Format("{0:C}", Model.Price)</span></div>
+                                <div class="product-info-stock-sku">
+                                    <div>
+                                        <small>Görüntülenme sayısı</small>: @HttpContext.Current.Application["PageCounter_" + Model.ID]
+                                        <label>Stok Durumu: </label>
+                                        @if (Model.UnitsInStock == 0)
+                                        {
+                                            <span class="info-deta" style="color:darkred;">Stokta Yok !</span>
+                                        }
+                                        else if (Model.UnitsInStock <= 20)
+                                        {
+                                            <span class="info-deta" style="color:red">Son @Model.UnitsInStock Ürün !</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="info-deta">Stokta Var</span>
+                                        }
+                                    </div>
+                                </div>
+                                <p>@Model.Description</p>
+                                <div class="mb-40">
+                                    <div class="bottom-detail cart-button">
+                                        <ul>
+                                            <li class="pro-cart-icon">
+                                                <form>
+                                                    <button title="Add to Cart" class="btn-black" type="button" onclick="AddBag('@Model.ID','1');"><span></span>Sepete Ekle</button>
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ptb-50">
+    <div class="container">
+        <div class="product-detail-tab">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="tabs">
+                        <ul class="nav nav-tabs">
+                            <li><a class="tab-Description selected" title="Description">Ürün Özellikleri</a></li>
+                        </ul>
+                    </div>
+                    <div id="items">
+                        <div class="tab_content">
+                            <ul>
+                                <li>
+                                    <div class="items-Description selected gray-bg">
+                                        <div class="Description">
+                                            <strong>@Model.Name</strong><br />
+                                            <p>@Model.Description</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

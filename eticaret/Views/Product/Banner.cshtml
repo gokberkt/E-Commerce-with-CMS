@@ -1,0 +1,19 @@
+﻿@{ 
+    Layout = null;
+}
+
+<div class="banner inner-banner align-center">
+    <div class="container">
+        <section class="banner-detail">
+            <h1 class="banner-title"> @ViewBag.ProductName </h1>
+            <div class="bread-crumb right-side">
+                <ul>
+                    <li><a href="/">Anasayfa</a>/</li>
+                    <li><a href="/urunler/@ViewBag.Category.seoUrl-@ViewBag.Category.ID">@ViewBag.Category.Name  </a>/</li>
+                    <li><span>@ViewBag.ProductName </span></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>
+

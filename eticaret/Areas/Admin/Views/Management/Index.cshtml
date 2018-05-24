@@ -1,0 +1,92 @@
+﻿
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<Products>
+
+<div class="">
+    <div class="page-header-title">
+        <h4 class="page-title">Tüm Ürünler</h4>
+    </div>
+</div>
+<div class="page-content-wrapper ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-inline pull-right">
+                    @if (Request.QueryString["arama"] != null)
+                    {
+                        <a href="/admin/management" class="btn btn-default" style="width:150px;">
+                            <i class="fa fa-eraser"></i> Temizle
+                        </a>
+                    }
+                    <input class="form-control" style="width:200px;@if (Request.QueryString["arama"] != null) { @Html.Raw("margin-left:3px;") }" type="text" name="arama" value="@if (Request.QueryString["arama"] != null) {@Html.Raw(Request.QueryString["arama"]) }" placeholder="Arama" />
+                    <button class="btn btn-primary" style="margin-left:3px;" type="submit">Ara</button>
+                </form>
+            </div>
+        </div>
+        <div class="clearfix m-t-20"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        @if (Request.QueryString["Status"] == "DeleteSuccess")
+                        {
+                            <div class="alert alert-success">Ürün başarıyla silindi.</div>
+                        }
+                        else if (Request.QueryString["Status"] == "DeleteFailed")
+                        {
+                            <div class="alert alert-danger">Ürün silinirken hata meydana geldi.</div>
+                        }
+
+                        <h4 class="m-b-30 m-t-0"></h4>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Ürün ID</th>
+                                            <th>Ürün Adı</th>
+                                            <th>Açıklama</th>
+                                            <th>Fiyat</th>
+                                            <th>Satış Sayısı</th>
+                                            <th>Stok Sayısı</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (Products item in Model)
+                                        {
+                                            <tr>
+                                                <td>@item.ID</td>
+                                                <td>@item.Name</td>
+                                                <td>@item.Description</td>
+                                                <td>@string.Format("{0:C}", item.Price)</td>
+                                                <td>@item.NumberOfSales</td>
+                                                <td>@item.UnitsInStock</td>
+                                                <td>
+                                                    <a href="/admin/management/EditProduct/@item.ID" class="btn btn-sm btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                    @if (item.Status == true)
+                                                    {
+                                                        <a data-toggle="modal" data-target="#GeneralDeleteModal" data-id="@item.ID" class="btn btn-sm btn-danger deleteButton"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                @Html.PagedListPager(Model, _pageNo => Url.Action("Index", "Management", new { pageNo = _pageNo, arama = Request.QueryString["arama"] }))
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- End Row -->
+    </div><!-- container -->
+</div>
+
+
+@Html.DeleteModal("/Admin/management/RemoveProduct", "Ürünü silmek istediğinize emin misiniz?", "Ürün Silinecek!")

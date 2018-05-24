@@ -1,0 +1,186 @@
+﻿
+@{
+    ViewBag.Title = "OrderComplete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<BagProducts>
+
+<div class="banner inner-banner align-center">
+    <div class="container">
+        <section class="banner-detail">
+            <h1 class="banner-title">Siparişlerim</h1>
+            <div class="bread-crumb right-side">
+                <ul>
+                    <li><a href="/">Anasayfa</a>/</li>
+                    <li><span>Sipariş Tamamlama</span></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<section class="checkout-section ptb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="checkout-step mb-40">
+                    <ul>
+                        <li class="active">
+                            <a href="/hesap-onay">
+                                <div class="step">
+                                    <div class="line"></div>
+                                    <div class="circle">1</div>
+                                </div>
+                                <span>Hesap Bilgileri Onaylama</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="/siparis-ozet">
+                                <div class="step">
+                                    <div class="line"></div>
+                                    <div class="circle">2</div>
+                                </div>
+                                <span>Sipariş Özeti</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="/odeme">
+                                <div class="step">
+                                    <div class="line"></div>
+                                    <div class="circle">3</div>
+                                </div>
+                                <span>Ödeme</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="/siparis-onay">
+                                <div class="step">
+                                    <div class="line"></div>
+                                    <div class="circle">4</div>
+                                </div>
+                                <span>Sipariş Tamamlama</span>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="step">
+                                <div class="line"></div>
+                            </div>
+                        </li>
+                    </ul>
+                    <hr>
+                </div>
+                @if (Model == null)
+                {
+                    <div class="alert alert-danger">@ViewBag.Error</div>
+                }
+                else
+                {
+                    <div class="checkout-content">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="heading-part align-center">
+                                    <h2 class="heading">Satın Alma Özeti</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-8 mb-sm-30">
+                                <div class="cart-item-table complete-order-table commun-table mb-30">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Ürün</th>
+                                                    <th>Ürün Detay</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (BagProducts item in Model)
+                                                {
+                                                    eTicaretDBEntities db = new eTicaretDBEntities();
+                                                    Products pd = db.Products.Find(item.ProductID);
+
+                                                    <tr>
+                                                        <td>
+                                                            <a href="/urunler/urun-detay/@pd.seoUrl-@pd.ID">
+                                                                <div class="product-image"><img src="@pd.Photo"></div>
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <div class="product-title">
+                                                                <a href="/urunler/urun-detay/@pd.seoUrl-@pd.ID">@pd.Name</a>
+                                                                <div class="product-info-stock-sku m-0">
+                                                                    <div>
+                                                                        <label>Fiyat: </label>
+                                                                        <div class="price-box"> <span class="info-deta price">@string.Format("{0:C}", pd.Price)</span> </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="product-info-stock-sku m-0">
+                                                                    <div>
+                                                                        <label>Miktar: </label>
+                                                                        <span class="info-deta">@item.Amount</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="complete-order-detail commun-table mb-30">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td><b>Satın alma tarihi :</b></td>
+                                                    <td>@ViewBag.Date</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b>Toplam :</b></td>
+                                                    <td><div class="price-box"> <span class="price">@string.Format("{0:C}", Model.Sum(x => x.Amount * Helpers.GetProduct(x.ProductID).Price))</span> </div></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="right-side float-none-xs"> <a class="btn btn-black" href="/"><span><i class="fa fa-angle-left"></i></span>Alışverişe Devam Edin</a> </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="cart-total-table address-box commun-table mb-30">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Adresiniz</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <ul>
+                                                            <li class="inner-heading"> <b>@CustomerData.Info.Fullname</b> </li>
+                                                            <li>
+                                                                <p>@CustomerData.Info.Phone</p>
+                                                            </li>
+                                                            <li>
+                                                                <p>@CustomerData.Info.Address</p>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

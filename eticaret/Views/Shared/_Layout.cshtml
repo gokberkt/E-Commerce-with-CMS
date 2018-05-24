@@ -1,0 +1,359 @@
+﻿<!DOCTYPE html>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="tr">
+
+<head>
+    <!-- Basic Page Needs
+      ================================================== -->
+    <meta charset="utf-8">
+    <title>BLL Shop</title>
+    <!-- SEO Meta
+      ================================================== -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <!-- Mobile Specific Metas
+      ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- CSS
+      ================================================== -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/fotorama.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/responsive.css">
+    <link rel="shortcut icon" href="~/Content/images/favicon.png">
+    <link rel="apple-touch-icon" href="~/Content/images/apple-touch-icon.html">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/Content/images/apple-touch-icon-72x72.html">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/Content/images/apple-touch-icon-114x114.html">
+    <link rel=stylesheet href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic&amp;subset=latin,latin-ext">
+    <script src="~/Content/js/jquery-1.12.3.min.js"></script>
+</head>
+<body>
+    <div class="se-pre-con"></div>
+    <div class="main">
+        <!-- HEADER START -->
+        <header class="navbar navbar-custom" id="header">
+            <div class="header-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-7 col-xs-5">
+                            <div class="top-link right-side">
+                                @if (Request.Cookies["UserCookie"] == null)
+                                {
+                                    <ul>
+                                        <li>
+                                            <a href="/kullanici-kayit" title="Kayıt Ol">
+                                                <i class="fa fa-sign-out hidden-sm hidden-lg" aria-hidden="true"></i>
+                                                <span class="hidden-xs">Kayıt Ol</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/kullanici-giris" title="Giriş">
+                                                <i class="fa fa-lock hidden-sm hidden-lg" aria-hidden="true"></i>
+                                                <span class="hidden-xs">Giriş</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <ul>
+                                        <li>
+                                            <a href="/hesabim" title="Hesabım">
+                                                <i class="fa fa-sign-out hidden-sm hidden-lg" aria-hidden="true"></i>
+                                                <span class="hidden-xs">Hesabım</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/kullanici-cikis" title="Çıkış">
+                                                <i class="fa fa-lock hidden-sm hidden-lg" aria-hidden="true"></i>
+                                                <span class="hidden-xs">Çıkış</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-middle">
+                <div class="container">
+                    <hr>
+                    <div class="header-inner">
+                        <div class="row">
+                            <div class="col-md-7 col-sm-6 col-xs-6">
+                                <div class="navbar-header">
+                                    <a class="navbar-brand page-scroll" href="/"> <img alt="MarketShop" src="~/Content/images/logo.png"> </a>
+                                </div>
+                            </div>
+                            <div class="col-md-5 col-sm-6 col-xs-6">
+                                <div class="right-side">
+                                    <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button"><i class="fa fa-bars"></i></button>
+                                    <div class="right-side float-left-xs header-right-link">
+                                        <div class="main-search">
+                                            <div class="header_search_toggle desktop-view">
+                                                <form>
+                                                    <div class="search-box">
+                                                        <input class="input-text" type="text" placeholder="Arama...">
+                                                        <button class="search-btn"></button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="header_search_toggle mobile-view">
+                                    <form>
+                                        <div class="search-box">
+                                            <input class="input-text" type="text" placeholder="Arama...">
+                                            <button class="search-btn"></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+        <!-- HEADER END -->
+        <!-- CAROUSEL START -->
+        <!-- CAROUSEL END -->
+        <!--  Site Services Features Block Start  -->
+        <!--  Site Services Features Block End  -->
+        <!-- CONTAIN START -->
+        <!-- CONTAINER END -->
+
+        @{ Html.RenderAction("Header", "Home"); }
+
+        @RenderBody()
+
+        <!-- FOOTER START -->
+        <div class="footer dark-bg">
+            <div class="container">
+                <div class="footer-inner">
+                    <div class="footer-middle">
+                        <div class="row">
+                            <div class="col-md-4 f-col">
+                                <div class="footer-static-block">
+                                    <span class="opener plus"></span>
+                                    <div class="f-logo">
+                                        <a href="~/Content/index.html" class=""> <img src="~/Content/images/footer-logo.png" alt="MarketShop"> </a>
+                                    </div>
+                                    <div class="footer-block-contant">
+                                        <p>Lorem khaled ipsum is a major key to success. It’s on you how you want to live your life. Everyone has a choice. I pick my choice, squeaky clean. Always remember in the jungle there’s a lot of they in there, after you overcome.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-4 f-col">
+                                        <div class="footer-static-block">
+                                            <span class="opener plus"></span>
+                                            <h3 class="title">Information</h3>
+                                            <ul class="footer-block-contant link">
+                                                <li><a>About</a></li>
+                                                <li><a>Contact Us</a></li>
+                                                <li><a>Blog</a></li>
+                                                <li><a>Affiliates</a></li>
+                                                <li><a>Career</a></li>
+                                                <li><a>FAQ?</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 f-col">
+                                        <div class="footer-static-block">
+                                            <span class="opener plus"></span>
+                                            <h3 class="title">Customer care</h3>
+                                            <ul class="footer-block-contant link">
+                                                <li><a>My Account</a></li>
+                                                <li><a>Order Tracking</a></li>
+                                                <li><a>Wishlist</a></li>
+                                                <li><a>Support</a></li>
+                                                <li><a>Customer Services</a></li>
+                                                <li><a>Exchange</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 f-col">
+                                        <div class="footer-static-block">
+                                            <span class="opener plus"></span>
+                                            <h3 class="title">Address</h3>
+                                            <ul class="footer-block-contant address-footer">
+                                                <li class="item">
+                                                    <i class="fa fa-home"> </i>
+                                                    <p>150-A Appolo aprtment, opp. Hopewell Junction, Allen st Road, new york-405001.</p>
+                                                </li>
+                                                <li class="item">
+                                                    <i class="fa fa-envelope"> </i>
+                                                    <p> <a>info@marketmhop.com </a> </p>
+                                                </li>
+                                                <li class="item">
+                                                    <i class="fa fa-phone"> </i>
+                                                    <a href="~/Content/tel:+91123456789">+(91) 12 34 567 899</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <div class="row">
+                            <div class="col-sm-4 p-0">
+                                <div class="footer_social pt-xs-15 center-xs mt-xs-15">
+                                    <ul class="social-icon">
+                                        <li><a title="Facebook" class="facebook"><i class="fa fa-facebook"> </i></a></li>
+                                        <li><a title="Twitter" class="twitter"><i class="fa fa-twitter"> </i></a></li>
+                                        <li><a title="Linkedin" class="linkedin"><i class="fa fa-linkedin"> </i></a></li>
+                                        <li><a title="RSS" class="rss"><i class="fa fa-rss"> </i></a></li>
+                                        <li><a title="Pinterest" class="pinterest"><i class="fa fa-pinterest"> </i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="copy-right center-sm">© @DateTime.Now.Year  Tüm hakları saklıdır. <span style="color:orangered">BLL Ticaret</span></div>
+                            </div>
+                            <div class="col-sm-4 p-0">
+                                <div class="payment float-none-xs center-sm">
+                                    <ul class="payment_icon">
+                                        <li class="discover"><a></a></li>
+                                        <li class="visa"><a></a></li>
+                                        <li class="mastro"><a></a></li>
+                                        <li class="paypal"><a></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-top">
+            <div id="scrollup"></div>
+        </div>
+        <!-- FOOTER END -->
+    </div>
+    <script src="~/Content/js/jquery-1.12.3.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/jquery-ui.min.js"></script>
+    <script src="~/Content/js/fotorama.js"></script>
+    <script src="~/Content/js/jquery.magnific-popup.js"></script>
+    <script src="~/Content/js/owl.carousel.min.js"></script>
+    <script src="~/Content/js/custom.js"></script>
+    <script src="~/Content/assets/bootstrap-notify.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            GetBagProductsList();
+        });
+        function NotifyAlert(msg, type) {
+            var alertType = "success";
+            if (type==1) {
+                alertType = "success";
+            } else if (type==0) {
+                alertType = "danger";
+            }
+            $.notify({
+                // options
+                message: msg
+            }, {
+                    // settings
+                    type: alertType
+                });
+        }
+
+        function GetBagProductsList() {
+            $("#BagDiv").html("");
+            
+            $.get("/Cart/BagList", function (data) {
+                if (data == "0") {
+                    $("#BagDiv").append("<li>Sepetinizde hiç ürün yok :(</li>");
+                    $("#CartTotal").html("0 TL");
+                    return;
+                } else if (data=="-2"){
+                    $("#BagGlobalDiv").html("Sepetinizde hiç ürün yok.<br>Ürün eklemek için <a style=\"color:#f0f0f0;font-weight:bold\" href=\"/kullanici-giris\">üye girişi</a> yapınız.");
+                } else if (data == "-1") {
+                    $("#BagDiv").append("<li>Sistemde bir hata meydana geldi.</li>");
+                    return;
+                }
+                
+                var totalPrice = 0;
+                $.each(data, function (i, v) {
+                    totalPrice += v.Amount * v.Price;
+                    $("#BagDiv").append('<li><a style="margin-right: 25px;" href="javascript:BagProductDelete(' + v.ID + ')" class="close-cart"><i class="fa fa-times-circle"></i></a><div class="media"><a class="pull-left"> <img alt="MarketShop" src="' + v.Image + '"></a><div class="media-body"><span><a>' + v.Name + '</a></span><p class="cart-price">Fiyat : ' + v.Price + ' <span style="font-family: Source Sans Pro;font-size:15px;">₺</span></p><div class="product-qty"><label>Adet : </label><div class="custom-qty"> <span style="margin-left: 5px;"> ' + v.Amount + '</span></div></div><div class="pull-right"><a href="javascript:BagIncrease(' + v.ID + ')"><i class="fa fa-plus-square" style="font-size:20px;" aria-hidden="true"></i></a><a  href="javascript:BagDecrease(' + v.ID + ')"><i class="fa fa-minus-square" style="font-size:20px;margin-left:5px;" aria-hidden="true"></i></a></div></div></div></li>');
+                });
+                $("#CartTotal").html(totalPrice + " TL");
+            });
+        }
+        function AddBag(id, amount) {
+
+            $.post("/Cart/BagProductAdd", { productID: id, amount: amount }, function (data) {
+                if (data == "0") {
+                    NotifyAlert("Seçtiğiniz ürün için stoklarımız yetersiz :(", 0);
+                }
+                else if (data == "-1") {
+                    NotifyAlert("Üzgünüz, sistemde bir hata meydana geldi.",0);
+                } else if (data == "-2") {
+                    window.location.href = "/kullanici-kayit";
+                }  else {
+                    GetBagProductsList();
+                    NotifyAlert('Ürün sepetinize eklendi!');
+                }
+            });
+        }
+        function BagProductDelete(id) {
+            $.get("/Cart/BagProductDelete?ID=" + id, function (data) {
+                if (data == "0") {
+                    NotifyAlert("Bu ürün sepette zaten yok!", 0);
+                }
+                else if (data == "-1") {
+                    NotifyAlert("Üzgünüz, sistemde bir hata meydana geldi.", 0);
+                } else if (data == "-2") {
+                    window.location.href = "/kullanici-kayit";
+                } else {
+                    GetBagProductsList();
+                    NotifyAlert("Ürün sepetinizden silindi.", 1);
+                }
+            });
+        }
+        function BagIncrease(id) {
+            $.get("/Cart/BagProductIncrease?ID=" + id, function (data) {
+                if (data == "0") {
+                    NotifyAlert("İstediğiniz miktarda ürün stoklarımızda bulunmamakta :(", 0);
+                }
+                else if (data == "-1") {
+                    NotifyAlert("Üzgünüz, sistemde bir hata meydana geldi.", 0);
+                } else if (data == "-2") {
+                    window.location.href = "/kullanici-kayit";
+                } else {
+                    GetBagProductsList();
+                }
+            });
+        }
+        function BagDecrease(id) {
+
+            $.get("/Cart/BagProductDecrease?ID=" + id, function (data) {
+                if (data == "-1") {
+                    NotifyAlert("Üzgünüz, sistemde bir hata meydana geldi.", 0);
+                } else if (data == "-2") {
+                    window.location.href = "/kullanici-kayit";
+                } else if(data=="1"){
+                    GetBagProductsList();
+                }
+            });
+        }
+    </script>
+</body>
+</html>

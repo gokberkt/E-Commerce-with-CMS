@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="eTicaretDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BagProducts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BagID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Bags" Relationship="Self.FK_BagProducts_Bags" FromRole="BagProducts" ToRole="Bags" />
+  </EntityType>
+  <EntityType Name="Bags">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BagProducts" Relationship="Self.FK_BagProducts_Bags" FromRole="Bags" ToRole="BagProducts" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK_Bags_Customers" FromRole="Bags" ToRole="Customers" />
+    <Property Name="IsSold" Type="Boolean" />
+    <Property Name="SellDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="SoldProducts" Relationship="eTicaretDBModel.FK_SoldProducts_Bags" FromRole="Bags" ToRole="SoldProducts" />
+  </EntityType>
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MasterCatID" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="seoUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Categories1" Relationship="Self.FK_Categories_Categories" FromRole="Categories" ToRole="Categories1" />
+    <NavigationProperty Name="Categories2" Relationship="Self.FK_Categories_Categories" FromRole="Categories1" ToRole="Categories" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Products_Categories" FromRole="Categories" ToRole="Products" />
+    <NavigationProperty Name="Products1" Relationship="Self.FK_Products_Categories1" FromRole="Categories" ToRole="Products" />
+    <Property Name="Status" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Comments_Products" FromRole="Comments" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="Bags" Relationship="Self.FK_Bags_Customers" FromRole="Customers" ToRole="Bags" />
+    <Property Name="Fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SoldProducts" Relationship="eTicaretDBModel.FK_SoldProducts_Customers" FromRole="Customers" ToRole="SoldProducts" />
+  </EntityType>
+  <EntityType Name="Editors">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryID" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ExtraDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UnitsInStock" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="NumberOfSales" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="seoUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Categories" Relationship="Self.FK_Products_Categories" FromRole="Products" ToRole="Categories" />
+    <NavigationProperty Name="Categories1" Relationship="Self.FK_Products_Categories1" FromRole="Products" ToRole="Categories" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Products" FromRole="Products" ToRole="Comments" />
+    <NavigationProperty Name="SoldProducts" Relationship="eTicaretDBModel.FK_SoldProducts_Products" FromRole="Products" ToRole="SoldProducts" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="ProductImages" Relationship="eTicaretDBModel.FK_ProductImages_Products" FromRole="Products" ToRole="ProductImages" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_BagProducts_Bags">
+    <End Role="Bags" Type="Self.Bags" Multiplicity="1" />
+    <End Role="BagProducts" Type="Self.BagProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bags">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BagProducts">
+        <PropertyRef Name="BagID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bags_Customers">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+    <End Role="Bags" Type="Self.Bags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Bags">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Categories_Categories">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+    <End Role="Categories1" Type="Self.Categories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Categories1">
+        <PropertyRef Name="MasterCatID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_Categories">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_Categories1">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comments_Products">
+    <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+    <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="eTicaretDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BagProducts" EntityType="Self.BagProducts" />
+    <EntitySet Name="Bags" EntityType="Self.Bags" />
+    <EntitySet Name="Categories" EntityType="Self.Categories" />
+    <EntitySet Name="Comments" EntityType="Self.Comments" />
+    <EntitySet Name="Customers" EntityType="Self.Customers" />
+    <EntitySet Name="Editors" EntityType="Self.Editors" />
+    <EntitySet Name="Products" EntityType="Self.Products" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_BagProducts_Bags" Association="Self.FK_BagProducts_Bags">
+      <End Role="Bags" EntitySet="Bags" />
+      <End Role="BagProducts" EntitySet="BagProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bags_Customers" Association="Self.FK_Bags_Customers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Bags" EntitySet="Bags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Categories_Categories" Association="Self.FK_Categories_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Categories1" EntitySet="Categories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_Categories" Association="Self.FK_Products_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_Categories1" Association="Self.FK_Products_Categories1">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comments_Products" Association="Self.FK_Comments_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <EntitySet Name="SoldProducts" EntityType="eTicaretDBModel.SoldProducts" />
+    <AssociationSet Name="FK_SoldProducts_Customers" Association="eTicaretDBModel.FK_SoldProducts_Customers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="SoldProducts" EntitySet="SoldProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SoldProducts_Products" Association="eTicaretDBModel.FK_SoldProducts_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="SoldProducts" EntitySet="SoldProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SoldProducts_Bags" Association="eTicaretDBModel.FK_SoldProducts_Bags">
+      <End Role="Bags" EntitySet="Bags" />
+      <End Role="SoldProducts" EntitySet="SoldProducts" />
+    </AssociationSet>
+    <EntitySet Name="Admins" EntityType="eTicaretDBModel.Admins" />
+    <EntitySet Name="Logs" EntityType="eTicaretDBModel.Logs" />
+    <AssociationSet Name="FK_Logs_Admins" Association="eTicaretDBModel.FK_Logs_Admins">
+      <End Role="Admins" EntitySet="Admins" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <EntitySet Name="ProductImages" EntityType="eTicaretDBModel.ProductImages" />
+    <AssociationSet Name="FK_ProductImages_Products" Association="eTicaretDBModel.FK_ProductImages_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="ProductImages" EntitySet="ProductImages" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="SoldProducts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="Amount" Type="Int32" />
+    <NavigationProperty Name="Customers" Relationship="eTicaretDBModel.FK_SoldProducts_Customers" FromRole="SoldProducts" ToRole="Customers" />
+    <NavigationProperty Name="Products" Relationship="eTicaretDBModel.FK_SoldProducts_Products" FromRole="SoldProducts" ToRole="Products" />
+    <Property Name="BagID" Type="Int32" />
+    <NavigationProperty Name="Bags" Relationship="eTicaretDBModel.FK_SoldProducts_Bags" FromRole="SoldProducts" ToRole="Bags" />
+  </EntityType>
+  <Association Name="FK_SoldProducts_Customers">
+    <End Type="eTicaretDBModel.Customers" Role="Customers" Multiplicity="0..1" />
+    <End Type="eTicaretDBModel.SoldProducts" Role="SoldProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SoldProducts">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SoldProducts_Products">
+    <End Type="eTicaretDBModel.Products" Role="Products" Multiplicity="0..1" />
+    <End Type="eTicaretDBModel.SoldProducts" Role="SoldProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SoldProducts">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SoldProducts_Bags">
+    <End Type="eTicaretDBModel.Bags" Role="Bags" Multiplicity="0..1" />
+    <End Type="eTicaretDBModel.SoldProducts" Role="SoldProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bags">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SoldProducts">
+        <PropertyRef Name="BagID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Admins">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="Logs" Relationship="eTicaretDBModel.FK_Logs_Admins" FromRole="Admins" ToRole="Logs" />
+  </EntityType>
+  <EntityType Name="Logs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdminID" Type="Int32" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="Admins" Relationship="eTicaretDBModel.FK_Logs_Admins" FromRole="Logs" ToRole="Admins" />
+  </EntityType>
+  <Association Name="FK_Logs_Admins">
+    <End Type="eTicaretDBModel.Admins" Role="Admins" Multiplicity="0..1" />
+    <End Type="eTicaretDBModel.Logs" Role="Logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admins">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="AdminID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ProductImages">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="ImagePath" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="eTicaretDBModel.FK_ProductImages_Products" FromRole="ProductImages" ToRole="Products" />
+  </EntityType>
+  <Association Name="FK_ProductImages_Products">
+    <End Type="eTicaretDBModel.Products" Role="Products" Multiplicity="1" />
+    <End Type="eTicaretDBModel.ProductImages" Role="ProductImages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductImages">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

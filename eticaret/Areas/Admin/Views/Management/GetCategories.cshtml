@@ -1,0 +1,101 @@
+﻿
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="">
+    <div class="page-header-title">
+        <h4 class="page-title">Tüm Kategoriler</h4>
+    </div>
+</div>
+<div class="page-content-wrapper ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        @if (Request.QueryString["Status"] == "DeleteSuccess")
+                        {
+                            <div class="alert alert-success">Kategori başarıyla silindi.</div>
+                        }
+                        else if (Request.QueryString["Status"] == "DeleteFailed")
+                        {
+                            <div class="alert alert-danger">Kategori silinirken hata meydana geldi.</div>
+                        }
+                        <h4 class="m-b-30 m-t-0"></h4>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Kategori Adı</th>
+                                            <th>Ana Kategori</th>
+                                            <th>Açıklama</th>
+                                            <th>Durum</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @{
+                                            eTicaretDBEntities db = new eTicaretDBEntities();
+                                            List<Categories> masterCats = db.Categories.Where(x => x.MasterCatID == null).ToList();
+                                        }
+                                        @foreach (Categories masterCat in masterCats)
+                                        {
+                                            <tr>
+                                                <td>@masterCat.Name</td>
+                                                <td></td>
+                                                <td>@masterCat.Description</td>
+                                                <td>
+                                                    @if (masterCat.Status == true)
+                                                    {
+                                                        <span style="color:#075c0b;font-weight:bold">Aktif</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span style="color:#7d0808;font-weight:bold">Pasif</span>
+                                                    }
+                                                </td>
+                                                <td>
+                                                    <a href="/Admin/Management/editcategory/@masterCat.ID" class="btn btn-sm btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                    <a data-toggle="modal" data-target="#GeneralDeleteModal" data-id="@masterCat.ID" class="btn btn-sm btn-danger deleteButton"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                                </td>
+                                            </tr>
+
+
+
+                                            foreach (Categories cat in masterCat.Categories1.ToList())
+                                            {
+                                                <tr>
+                                                    <td>@cat.Name</td>
+                                                    <td>@cat.Categories2.Name</td>
+                                                    <td>@cat.Description</td>
+                                                    <td>
+                                                        @if (masterCat.Status == true)
+                                                        {
+                                                            <span style="color:#075c0b;font-weight:bold">Aktif</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span style="color:#7d0808;font-weight:bold">Pasif</span>
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        <a href="/Admin/Management/editcategory/@cat.ID" class="btn btn-sm btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                        <a data-toggle="modal" data-target="#GeneralDeleteModal" data-id="@cat.ID" class="btn btn-sm btn-danger deleteButton"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- End Row -->
+    </div><!-- container -->
+</div>
+@Html.DeleteModal("/Admin/management/RemoveCategory", "Kategoriyi silmek istediğinize emin misiniz?", "Kategori Silinecek!")

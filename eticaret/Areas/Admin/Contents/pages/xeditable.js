@@ -1,0 +1,9 @@
+
+/**
+ Template Name: Upbond
+ X Editable
+ */
+
+
+
+$(function(){$.fn.editableform.buttons='<button type="submit" class="btn btn-success editable-submit btn-sm waves-effect waves-light"><i class="mdi mdi-check"></i></button><button type="button" class="btn btn-danger editable-cancel btn-sm waves-effect"><i class="mdi mdi-close"></i></button>',$("#username").editable({type:"text",pk:1,name:"username",title:"Enter username"}),$("#firstname").editable({validate:function(e){return""==$.trim(e)?"This field is required":void 0}}),$("#sex").editable({prepend:"not selected",source:[{value:1,text:"Male"},{value:2,text:"Female"}],display:function(e,t){var i={"":"#98a6ad",1:"#5fbeaa",2:"#5d9cec"},n=$.grep(t,function(t){return t.value==e});n.length?$(this).text(n[0].text).css("color",i[e]):$(this).empty()}}),$("#status").editable(),$("#group").editable({showbuttons:!1}),$("#dob").editable(),$("#comments").editable({showbuttons:"bottom"}),$("#inline-username").editable({type:"text",pk:1,name:"username",title:"Enter username",mode:"inline"}),$("#inline-firstname").editable({validate:function(e){return""==$.trim(e)?"This field is required":void 0},mode:"inline"}),$("#inline-sex").editable({prepend:"not selected",mode:"inline",source:[{value:1,text:"Male"},{value:2,text:"Female"}],display:function(e,t){var i={"":"#98a6ad",1:"#5fbeaa",2:"#5d9cec"},n=$.grep(t,function(t){return t.value==e});n.length?$(this).text(n[0].text).css("color",i[e]):$(this).empty()}}),$("#inline-status").editable({mode:"inline",inputclass:"string"}),$("#inline-group").editable({showbuttons:!1,mode:"inline"}),$("#inline-dob").editable({mode:"inline"}),$("#inline-comments").editable({showbuttons:"bottom",mode:"inline"})});

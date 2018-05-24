@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@model Customers
+
+<!-- BANNER STRAT -->
+<div class="banner inner-banner align-center">
+    <div class="container">
+        <section class="banner-detail">
+            <h1 class="banner-title">Giriş</h1>
+            <div class="bread-crumb right-side">
+                <ul>
+                    <li><a href="/">Anasayfa</a>/</li>
+                    <li><span>Giriş</span></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>
+<!-- BANNER END -->
+<!-- CONTAIN START -->
+<section class="checkout-section ptb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-lg-6 col-md-8 col-sm-8 col-lg-offset-3 col-sm-offset-2">
+                        <form method="post" action="" class="main-form full">
+                            @if (Request.QueryString["RegisterStatus"] == "Success")
+                            {
+                                <div class="alert alert-success">Kayıt işlemi başarıyla gerçekleştirildi.Giriş yapabilirsiniz.</div>
+                            }
+
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+                                <div class="col-xs-12 mb-20">
+                                    <div class="heading-part heading-bg">
+                                        <h2 class="heading">Giriş Yapın</h2>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    @if (ViewBag.Error != null)
+                                    {
+                                        <div class="alert alert-danger">@ViewBag.Error</div>
+                                    }
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="input-box">
+                                        <label for="login-email">E-Posta Adresiniz</label>
+                                        <input id="login-email" type="email" name="Email" required placeholder="E-Posta Adresinizi girin..">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="input-box">
+                                        <label for="login-pass">Şifre</label>
+                                        <input id="login-pass" type="password" name="Password" required placeholder="Şifrenizi girin..">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="check-box left-side">
+                                        <span>
+                                            <input type="checkbox" name="remember_me" id="remember_me" class="checkbox">
+                                        </span>
+                                        <label for="remember_me">Beni Hatırla</label>
+                                    </div>
+                                    <button name="submit" type="submit" class="btn-color right-side">Giriş Yap</button>
+                                </div>
+                                <div class="col-xs-12">
+                                    <a title="Forgot Password" class="forgot-password mtb-20" href="#">Şifremi Unuttum !</a>
+                                    <hr>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- CONTAINER END --> 

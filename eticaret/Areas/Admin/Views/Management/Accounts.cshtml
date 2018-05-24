@@ -1,0 +1,63 @@
+﻿
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model List<Admins>
+
+<div class="">
+    <div class="page-header-title">
+        <h4 class="page-title">Adminler</h4>
+    </div>
+</div>
+<div class="page-content-wrapper ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        <h4 class="m-b-30 m-t-0"></h4>
+                        <div class="row">
+                            <form class="form-horizontal" method="post" action="">
+                                <div class="col-xs-12">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Ad ve Soyad</th>
+                                                <th>E-Posta</th>
+                                                <th>Oluşturma Tarihi</th>
+                                                <th>Durum</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (Admins item in Model)
+                                            {
+                                                <tr>
+                                                    <td>@item.Name @item.Lastname</td>
+                                                    <td>@item.Email</td>
+                                                    <td>@item.CreatedDate</td>
+                                                    <td>
+                                                        @if (item.Status == true)
+                                                        {
+                                                            @Html.Raw("Aktif")
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.Raw("Pasif")
+                                                        }
+                                                    </td>
+                                                    <td><a href="/admin/management/EditAdmin/@item.ID" class="btn btn-sm btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,154 @@
+﻿@model IEnumerable<Products>
+
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    eTicaretDBEntities db = new eTicaretDBEntities();
+}
+
+<!-- BANNER STRAT -->
+
+<div class="banner inner-banner align-center">
+    <div class="container">
+        <section class="banner-detail">
+            <h1 class="banner-title">@ViewBag.Category.Name</h1>
+            <div class="bread-crumb right-side">
+                <ul>
+                    <li><a href="/">Anasayfa</a>/</li>
+                    <li><span>@ViewBag.Category.Name</span></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- BANNER END -->
+<!-- CONTAIN START -->
+<section class="ptb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 mb-xs-30">
+                <div class="sidebar-block">
+                    <div class="sidebar-box listing-box mb-40">
+                        <span class="opener plus"></span>
+                        <div class="sidebar-title">
+                            <h3>Kategoriler</h3>
+                        </div>
+                        <div class="sidebar-contant">
+                            <ul>
+                                @foreach (var item in ViewBag.Categories)
+                                {
+
+                                    if (item.MasterCatID != null)
+                                    {
+                                        <li><a href="/urunler/@item.seoUrl-@item.ID">@item.Name</a></li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-box sidebar-item">
+                        <span class="opener plus"></span>
+                        <div class="sidebar-title">
+                            <h3>Çok Satanlar</h3>
+                        </div>
+                        @foreach (var item in db.Products.OrderByDescending(x => x.NumberOfSales).Take(3))
+                        {
+                            <div class="sidebar-contant">
+                                <ul>
+                                    <li>
+                                        <div class="pro-media"> <a href="/urunler/urun-detay/@item.seoUrl-@item.ID"><img src="@item.Photo"></a> </div>
+                                        <div class="pro-detail-info">
+                                            <a href="/urunler/urun-detay/@item.seoUrl-@item.ID">@item.Name</a>
+                                            <div class="price-box"> <span class="price">@string.Format("{0:C}", item.Price)</span> </div>
+                                            <div class="cart-link">
+                                                <form>
+                                                    <button title="Add to Cart" type="button" onclick="AddBag('@item.ID','1');"><span></span></button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-8">
+                <div class="sidebar-title">
+                    <h3>Tüm Ürünler</h3>
+                </div>
+
+                <div class="shorting mb-30">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="short-by float-right-sm">
+                                <span>Sıralama</span>
+                                <div class="select-item">
+                                    <select name="sort" id="sort">
+                                        <option @if (Request.QueryString["sort"] == "NameAZ") {@Html.Raw("selected") } value="NameAZ">İsim (A - Z)</option>
+                                        <option @if (Request.QueryString["sort"]=="NameZA") { @Html.Raw("selected")}  value="NameZA">İsim (Z - A)</option>
+                                        <option @if (Request.QueryString["sort"]=="PriceHL") { @Html.Raw("selected")}  value="PriceHL">Fiyat (Yüksek > Düşük)</option>
+                                        <option @if (Request.QueryString["sort"]=="PriceLH") {@Html.Raw("selected") }  value="PriceLH">Fiyat (Düşük > Yüksek)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-listing">
+                    <div class="row mlr_-20">
+                        @foreach (var item in Model.Take(12))
+                        {
+                            <div class="col-md-4 col-xs-6 plr-20">
+                                <div class="product-item">
+                                    <div class="product-image">
+                                        <a href="/urunler/urun-detay/@item.seoUrl-@item.ID"> <img src="@item.Photo"></a>
+                                        <div class="product-detail-inner">
+                                            <div class="detail-inner-left left-side">
+                                                <ul>
+                                                    <li class="pro-cart-icon">
+                                                        <form>
+                                                            <button title="Add to Cart" type="button" onclick="AddBag('@item.ID','1');"><span></span></button>
+                                                        </form>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item-details">
+                                        <div class="product-item-name"><a href="/urunler/urun-detay/@item.seoUrl-@item.ID">@item.Name</a></div>
+                                        <div class="price-box">
+                                            <span class="price">@string.Format("{0:C}", item.Price)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="pagination-bar">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $("#sort").change(function () {
+        window.location.href = "@HttpContext.Current.Request.Url.LocalPath?sort=" + $("#sort").val();
+    });
+</script>

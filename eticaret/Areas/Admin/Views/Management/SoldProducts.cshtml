@@ -1,0 +1,55 @@
+﻿
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<SoldProducts>
+
+<div class="">
+    <div class="page-header-title">
+        <h4 class="page-title">Satışlar</h4>
+    </div>
+</div>
+<div class="page-content-wrapper ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        <h4 class="m-b-30 m-t-0"></h4>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Ürün Adı</th>
+                                            <th>Müşteri Adı</th>
+                                            <th>Müşteri Tel. No</th>
+                                            <th>Ürün Fiyatı</th>
+                                            <th>Satış Tarihi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (SoldProducts item in Model)
+                                        {
+                                            <tr>
+                                                <td>@item.Products.Name</td>
+                                                <td>@item.Customers.Fullname</td>
+                                                <td>@item.Customers.Phone</td>
+                                                <td>@string.Format("{0:C}", item.Products.Price)</td>
+                                                <td>@item.Bags.SellDate</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                @Html.PagedListPager(Model, _pageNo => Url.Action("SoldProducts", "Management", new { pageNo = _pageNo }))
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- End Row -->
+    </div><!-- container -->
+</div>

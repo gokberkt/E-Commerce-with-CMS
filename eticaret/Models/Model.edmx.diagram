@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a08a9a7a3d0f41bca07eae731b36055f" Name="Diagram1">
+        <EntityTypeShape EntityType="eTicaretDBModel.BagProducts" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eTicaretDBModel.Bags" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="eTicaretDBModel.Categories" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="eTicaretDBModel.Comments" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="eTicaretDBModel.Customers" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="eTicaretDBModel.Editors" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="eTicaretDBModel.Products" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="eTicaretDBModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="eTicaretDBModel.FK_BagProducts_Bags" ManuallyRouted="false" />
+        <AssociationConnector Association="eTicaretDBModel.FK_Bags_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="eTicaretDBModel.FK_Categories_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="eTicaretDBModel.FK_Products_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="eTicaretDBModel.FK_Products_Categories1" ManuallyRouted="false" />
+        <AssociationConnector Association="eTicaretDBModel.FK_Comments_Products" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="eTicaretDBModel.SoldProducts" Width="1.5" PointX="10.25" PointY="6.125" />
+        <AssociationConnector Association="eTicaretDBModel.FK_SoldProducts_Customers" />
+        <AssociationConnector Association="eTicaretDBModel.FK_SoldProducts_Products" />
+        <AssociationConnector Association="eTicaretDBModel.FK_SoldProducts_Bags" />
+        <EntityTypeShape EntityType="eTicaretDBModel.Admins" Width="1.5" PointX="3.375" PointY="10" />
+        <EntityTypeShape EntityType="eTicaretDBModel.Logs" Width="1.5" PointX="5.625" PointY="10.125" />
+        <AssociationConnector Association="eTicaretDBModel.FK_Logs_Admins" />
+        <EntityTypeShape EntityType="eTicaretDBModel.ProductImages" Width="1.5" PointX="5.25" PointY="14.25" />
+        <AssociationConnector Association="eTicaretDBModel.FK_ProductImages_Products" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

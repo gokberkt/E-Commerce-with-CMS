@@ -1,0 +1,107 @@
+F:\MyProjects\e ticaret 2\eticaret\eticaret\bin\eticaret.dll.config
+F:\MyProjects\e ticaret 2\eticaret\eticaret\bin\eticaret.dll
+F:\MyProjects\e ticaret 2\eticaret\eticaret\bin\eticaret.pdb
+F:\MyProjects\e ticaret 2\eticaret\eticaret\bin\EntityFramework.dll
+F:\MyProjects\e ticaret 2\eticaret\eticaret\bin\EntityFramework.SqlServer.dll
+F:\MyProjects\e ticaret 2\eticaret\eticaret\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\MyProjects\e ticaret 2\eticaret\eticaret\bin\Microsoft.Web.Infrastructure.dll
+F:\MyProjects\e ticaret 2\eticaret\eticaret\bin\System.Web.Helpers.dll
+F:\MyProjects\e ticaret 2\eticaret\eticaret\bin\System.Web.Mvc.dll
+F:\MyProjects\e ticaret 2\eticaret\eticaret\bin\System.Web.Razor.dll
+F:\MyProjects\e ticaret 2\eticaret\eticaret\bin\System.Web.Webpages.Deployment.dll
+F:\MyProjects\e ticaret 2\eticaret\eticaret\bin\System.Web.Webpages.dll
+F:\MyProjects\e ticaret 2\eticaret\eticaret\bin\System.Web.Webpages.Razor.dll
+F:\MyProjects\e ticaret 2\eticaret\eticaret\bin\EntityFramework.xml
+F:\MyProjects\e ticaret 2\eticaret\eticaret\bin\EntityFramework.SqlServer.xml
+F:\MyProjects\e ticaret 2\eticaret\eticaret\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\MyProjects\e ticaret 2\eticaret\eticaret\bin\System.Web.Razor.xml
+F:\MyProjects\e ticaret 2\eticaret\eticaret\bin\System.Web.Webpages.xml
+F:\MyProjects\e ticaret 2\eticaret\eticaret\bin\System.Web.Webpages.Deployment.xml
+F:\MyProjects\e ticaret 2\eticaret\eticaret\bin\System.Web.Webpages.Razor.xml
+F:\MyProjects\e ticaret 2\eticaret\eticaret\bin\System.Web.Helpers.xml
+F:\MyProjects\e ticaret 2\eticaret\eticaret\bin\System.Web.Mvc.xml
+F:\MyProjects\e ticaret 2\eticaret\eticaret\obj\Debug\eticaret.csproj.CoreCompileInputs.cache
+F:\MyProjects\e ticaret 2\eticaret\eticaret\obj\Debug\eticaret.dll
+F:\MyProjects\e ticaret 2\eticaret\eticaret\obj\Debug\eticaret.pdb
+F:\MyProjects\e ticaret 2\eticaret\eticaret\obj\Debug\eticaret.csprojResolveAssemblyReference.cache
+D:\BLLShop\eticaret\obj\Debug\eticaret.csproj.CoreCompileInputs.cache
+D:\BLLShop\eticaret\obj\Debug\eticaret.dll
+D:\BLLShop\eticaret\obj\Debug\eticaret.pdb
+D:\BLLShop\eticaret\bin\eticaret.dll.config
+D:\BLLShop\eticaret\bin\eticaret.dll
+D:\BLLShop\eticaret\bin\eticaret.pdb
+D:\BLLShop\eticaret\bin\EntityFramework.dll
+D:\BLLShop\eticaret\bin\EntityFramework.SqlServer.dll
+D:\BLLShop\eticaret\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\BLLShop\eticaret\bin\Microsoft.Web.Infrastructure.dll
+D:\BLLShop\eticaret\bin\System.Web.Helpers.dll
+D:\BLLShop\eticaret\bin\System.Web.Mvc.dll
+D:\BLLShop\eticaret\bin\System.Web.Razor.dll
+D:\BLLShop\eticaret\bin\System.Web.Webpages.Deployment.dll
+D:\BLLShop\eticaret\bin\System.Web.Webpages.dll
+D:\BLLShop\eticaret\bin\System.Web.Webpages.Razor.dll
+D:\BLLShop\eticaret\bin\EntityFramework.xml
+D:\BLLShop\eticaret\bin\EntityFramework.SqlServer.xml
+D:\BLLShop\eticaret\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\BLLShop\eticaret\bin\System.Web.Razor.xml
+D:\BLLShop\eticaret\bin\System.Web.Webpages.xml
+D:\BLLShop\eticaret\bin\System.Web.Webpages.Deployment.xml
+D:\BLLShop\eticaret\bin\System.Web.Webpages.Razor.xml
+D:\BLLShop\eticaret\bin\System.Web.Helpers.xml
+D:\BLLShop\eticaret\bin\System.Web.Mvc.xml
+G:\bllshopson\BLLShop\eticaret\bin\eticaret.dll.config
+G:\bllshopson\BLLShop\eticaret\bin\eticaret.dll
+G:\bllshopson\BLLShop\eticaret\bin\eticaret.pdb
+G:\bllshopson\BLLShop\eticaret\bin\EntityFramework.dll
+G:\bllshopson\BLLShop\eticaret\bin\EntityFramework.SqlServer.dll
+G:\bllshopson\BLLShop\eticaret\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+G:\bllshopson\BLLShop\eticaret\bin\Microsoft.Web.Infrastructure.dll
+G:\bllshopson\BLLShop\eticaret\bin\System.Web.Helpers.dll
+G:\bllshopson\BLLShop\eticaret\bin\System.Web.Mvc.dll
+G:\bllshopson\BLLShop\eticaret\bin\System.Web.Razor.dll
+G:\bllshopson\BLLShop\eticaret\bin\System.Web.Webpages.Deployment.dll
+G:\bllshopson\BLLShop\eticaret\bin\System.Web.Webpages.dll
+G:\bllshopson\BLLShop\eticaret\bin\System.Web.Webpages.Razor.dll
+G:\bllshopson\BLLShop\eticaret\bin\EntityFramework.xml
+G:\bllshopson\BLLShop\eticaret\bin\EntityFramework.SqlServer.xml
+G:\bllshopson\BLLShop\eticaret\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+G:\bllshopson\BLLShop\eticaret\bin\System.Web.Razor.xml
+G:\bllshopson\BLLShop\eticaret\bin\System.Web.Webpages.xml
+G:\bllshopson\BLLShop\eticaret\bin\System.Web.Webpages.Deployment.xml
+G:\bllshopson\BLLShop\eticaret\bin\System.Web.Webpages.Razor.xml
+G:\bllshopson\BLLShop\eticaret\bin\System.Web.Helpers.xml
+G:\bllshopson\BLLShop\eticaret\bin\System.Web.Mvc.xml
+G:\bllshopson\BLLShop\eticaret\obj\Debug\eticaret.csprojResolveAssemblyReference.cache
+G:\bllshopson\BLLShop\eticaret\obj\Debug\eticaret.csproj.CoreCompileInputs.cache
+G:\bllshopson\BLLShop\eticaret\obj\Debug\eticaret.dll
+G:\bllshopson\BLLShop\eticaret\obj\Debug\eticaret.pdb
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\eticaret.dll.config
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\eticaret.dll
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\eticaret.pdb
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\EntityFramework.dll
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\EntityFramework.SqlServer.dll
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\Microsoft.Web.Infrastructure.dll
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\PagedList.dll
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\PagedList.Mvc.dll
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\System.Web.Helpers.dll
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\System.Web.Mvc.dll
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\System.Web.Razor.dll
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\System.Web.Webpages.Deployment.dll
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\System.Web.Webpages.dll
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\System.Web.Webpages.Razor.dll
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\EntityFramework.xml
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\EntityFramework.SqlServer.xml
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\PagedList.xml
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\PagedList.Mvc.xml
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\System.Web.Razor.xml
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\System.Web.Webpages.xml
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\System.Web.Webpages.Deployment.xml
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\System.Web.Webpages.Razor.xml
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\System.Web.Helpers.xml
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\bin\System.Web.Mvc.xml
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\obj\Debug\eticaret.csproj.CoreCompileInputs.cache
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\obj\Debug\eticaret.dll
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\obj\Debug\eticaret.pdb
+F:\MyProjects\BLLShopSon\BLLShop\eticaret\obj\Debug\eticaret.csprojResolveAssemblyReference.cache

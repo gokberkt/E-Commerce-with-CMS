@@ -1,0 +1,82 @@
+﻿
+@{
+    Layout = null;
+    eTicaretDBEntities db = new eTicaretDBEntities();
+}
+
+@model IEnumerable<Categories>
+
+<div class="container">
+    <div class="header-bottom">
+        <div class="">
+            <div id="menu" class="navbar-collapse collapse left-side p-0">
+                <ul class="nav navbar-nav navbar-left">
+                    @foreach (Categories cat in Model.Where(x => x.MasterCatID == null).ToList())
+                    {
+                        <li class="level">
+                            <span class="opener plus"></span>
+                            <a href="javascript:void(0)" class="page-scroll">@cat.Name</a>
+                            <div class="megamenu mobile-sub-menu">
+                                <div class="megamenu-inner-top">
+                                    <ul class="sub-menu-level1">
+                                        @foreach (Categories subCat in Model.Where(x => x.MasterCatID == cat.ID))
+                                        {
+                                            <li class="level2">
+                                                <a href="/urunler/@subCat.seoUrl-@subCat.ID"><span>@subCat.Name</span></a>
+                                                <ul class="sub-menu-level2">
+                                                    @foreach (Products pd in db.Products.Where(x => x.CategoryID == subCat.ID).ToList())
+                                                    {
+                                                        <li class="level3">
+                                                            <a href="/urunler/urun-detay/@pd.seoUrl-@pd.ID">
+                                                                @if (pd.Name.Length > 17)
+                                                                {<p title="@pd.Name">@pd.Name.Substring(0, 15)...</p> }
+                                                            else
+                                                            {@Html.Raw(pd.Name)}
+                                                            </a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+                <div class="header_search_toggle mobile-view">
+                    <form>
+                        <div class="search-box">
+                            <input class="input-text" type="text" placeholder="Search entire store here...">
+                            <button class="search-btn"></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="right-side float-left-xs header-right-link">
+                <ul>
+                    <li class="cart-icon">
+                        <a href="#">
+                            <span> <!-- <small class="cart-notification">2</small> --> </span>
+                            <div class="cart-text hidden-sm hidden-xs">Sepetim</div>
+                        </a>
+                        <div class="cart-dropdown header-link-dropdown" id="BagGlobalDiv">
+                            @if (CustomerData.Info != null)
+                            {
+                                <div style="max-height:300px;overflow-y:auto;width: 300px;" id="scrollBagDiv">
+                                    <ul class="cart-list link-dropdown-list" id="BagDiv">
+                                        <!-- BURAYA SEPET GELECEK -->
+                                    </ul>
+                                </div>
+                                <p class="cart-sub-totle" style="margin-top:20px;"> <span class="pull-left">Sepet Toplamı :</span> <span class="pull-right"><strong class="price-box" id="CartTotal">0 TL</strong></span> </p>
+                                <div class="clearfix"></div>
+                                <div class="mt-20"><a href="/hesap-onay" class="btn-color btn right-side">Alışverişi Tamamla</a> </div>
+                            }
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

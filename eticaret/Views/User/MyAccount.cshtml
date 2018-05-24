@@ -1,0 +1,281 @@
+﻿
+@{
+    ViewBag.Title = "MyAccount";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    eTicaretDBEntities db = new eTicaretDBEntities();
+
+}
+
+@model Customers
+
+<!-- BANNER STRAT -->
+<div class="banner inner-banner align-center">
+    <div class="container">
+        <section class="banner-detail">
+            <h1 class="banner-title">Hesabım</h1>
+            <div class="bread-crumb right-side">
+                <ul>
+                    <li><a href="/">Anasayfa</a>/</li>
+                    <li><span>Hesap Ayarları</span></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>
+<!-- BANNER END -->
+<!-- CONTAIN START -->
+<section class="checkout-section ptb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4">
+                <div class="account-sidebar account-tab mb-xs-30">
+                    <div class="dark-bg tab-title-bg">
+                        <div class="heading-part">
+                            <div class="sub-title"><span></span>Hesabım</div>
+                        </div>
+                    </div>
+                    <div class="account-tab-inner">
+                        <ul class="account-tab-stap">
+                            <li id="step1" class="active"> <a href="javascript:void(0)">Hesap Özeti<i class="fa fa-angle-right"></i> </a> </li>
+                            <li id="step2"> <a href="javascript:void(0)">Hesap Detayları<i class="fa fa-angle-right"></i> </a> </li>
+                            <li id="step3"> <a href="javascript:void(0)">Siparişlerim<i class="fa fa-angle-right"></i> </a> </li>
+                            <li id="step4"> <a href="javascript:void(0)">Şifre Değiştir<i class="fa fa-angle-right"></i> </a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-8">
+                <div id="data-step1" class="account-content" data-temp="tabdata">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="heading-part heading-bg mb-30">
+                                <h2 class="heading m-0">Hesap Özeti</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-30">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                @if (CustomerData.Info.Fullname != null)
+                                {
+                                    <div class="heading-part">
+                                        <h3 class="sub-heading">Merhaba  @Model.Fullname</h3>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="heading-part">
+                                        <h3 class="sub-heading">Merhaba  @Model.Email</h3>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-0">
+                        <div class="row">
+                            <div class="col-xs-12 mb-20">
+                                <div class="heading-part">
+                                    <h3 class="sub-heading">Adres Bilgileri</h3>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="cart-total-table address-box commun-table">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Kargo Adresi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <ul>
+                                                            <li class="inner-heading">
+                                                                @if (CustomerData.Info.Fullname != null)
+                                                                {
+                                                                    <b>@Model.Fullname </b>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <b>@Model.Email </b>
+                                                                }
+                                                            </li>
+                                                            <li>
+                                                                @if (CustomerData.Info.Address == null)
+                                                                {
+                                                                    <p>Lütfen Sipariş verebilmek için adresinizi girin..</p>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <p>@Model.Address</p>
+                                                                }
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="data-step2" class="account-content" data-temp="tabdata" style="display:none">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="heading-part heading-bg mb-30">
+                                <h2 class="heading m-0">Hesap Detayları</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-0">
+                        <form class="main-form full" method="post" action="">
+                            @Html.AntiForgeryToken()
+                            <div class="mb-20">
+                                <div class="row">
+                                    <div class="col-xs-12 mb-20">
+                                        <div class="heading-part">
+                                            <h3 class="sub-heading">Adresim</h3>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="input-box">
+                                            @if (CustomerData.Info.Fullname != null)
+                                            {
+                                                <input type="text" name="Fullname" value="@Model.Fullname" required placeholder="Adınız ve Soyadınız">
+                                            }
+                                            else
+                                            {
+                                                <input type="text" name="Fullname" required placeholder="Adınız ve Soyadınız">
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="input-box">
+                                            @if (CustomerData.Info.Email != null)
+                                            {
+                                                <input type="email" name="Email" value="@Model.Email" required placeholder="E-Posta Adresiniz">
+                                            }
+                                            else
+                                            {
+                                                <input type="email" name="Email" required placeholder="E-Posta Adresiniz">
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="input-box">
+                                            @if (CustomerData.Info.Phone != null)
+                                            {
+                                                <input type="text" name="Phone" value="@Model.Phone" required placeholder="Telefon numaranız">
+                                            }
+                                            else
+                                            {
+                                                <input type="text" name="Phone" required placeholder="Telefon numaranız">
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="input-box">
+                                            @if (CustomerData.Info.Address != null)
+                                            {
+                                                <input type="text" name="Address" value="@Model.Address" required placeholder="Adresiniz">
+                                                <span>Lütfen tam adresinizi girin.</span>
+                                            }
+                                            else
+                                            {
+                                                <input type="text" name="Address" required placeholder="Adresiniz">
+                                                <span>Lütfen tam adresinizi girin.</span>
+                                            }
+                                        </div>
+                                    </div>
+                                    <button name="submit" type="submit" class="btn-color right-side">Hesap Değişikliklerimi Onaylıyorum</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div id="data-step3" class="account-content" data-temp="tabdata" style="display:none">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="heading-part heading-bg mb-30">
+                                <h2 class="heading m-0">Siparişlerim</h2>
+                            </div>
+                        </div>
+                    </div>
+                    @{
+                        List<SoldProducts> sp = db.SoldProducts.Where(x => x.CustomerID == CustomerData.Info.ID).ToList();
+                    }
+                    <div class="row">
+                        <div class="col-xs-12 mb-xs-30">
+                            <div class="cart-item-table commun-table">
+                                <div class="table-responsive">
+                                    @if (sp == null)
+                                    {
+                                        <div class="alert alert-danger">Üzgünüz henüz bizden alışveriş yapmamışsınız :(</div>
+                                    }
+                                    else
+                                    {
+                                        <table class="table">
+                                            @foreach (var item in sp)
+                                            {
+                                                <thead>
+                                                    <tr>
+                                                        <th colspan="4">
+                                                            <ul>
+                                                                <li><span>Sipariş Tarihi</span> <span>@item.Bags.SellDate</span></li>
+                                                                <li class="price-box"></li>
+                                                            </ul>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <a href="/urunler/urun-detay/@item.Products.seoUrl-@item.Products.ID">
+                                                                <div class="product-image"><img src="@item.Products.Photo"></div>
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <div class="product-title"> <a href="/urunler/urun-detay/@item.Products.seoUrl-@item.Products.ID">@item.Products.Name</a> </div>
+                                                            <div class="product-info-stock-sku m-0">
+                                                                <div>
+                                                                    <label>Miktar : </label>
+                                                                    <span class="info-deta">@item.Amount</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td><div class="base-price price-box"> <span class="price">@string.Format("{0:C}", item.Products.Price)</span> </div></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+
+                                            }
+                                        </table>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="data-step4" class="account-content" data-temp="tabdata" style="display:none">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="heading-part heading-bg mb-30">
+                                <h2 class="heading m-0">Şifre Değiştirme</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <span><a>Buraya</a>  tıklayarak şifre değiştirme talebinde bulunabilirsiniz.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- CONTAINER END -->

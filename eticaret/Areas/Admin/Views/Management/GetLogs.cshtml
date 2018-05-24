@@ -1,0 +1,54 @@
+﻿
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<Logs>
+
+<div class="">
+    <div class="page-header-title">
+        <h4 class="page-title">İşlem Geçmişi</h4>
+    </div>
+</div>
+<div class="page-content-wrapper ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        <h4 class="m-b-30 m-t-0"></h4>
+                        <div class="row">
+                            <form class="form-horizontal" method="post" action="">
+                                <div class="col-xs-12">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>İşlem</th>
+                                                <th>Oluşturma Tarihi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (Logs item in Model)
+                                            {
+                                                <tr>
+                                                    <td>@item.ID</td>
+                                                    <td>@item.Message</td>
+                                                    <td>@item.CreatedDate</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                    @Html.PagedListPager(Model, _pageNo => Url.Action("GetLogs", "Management", new { pageNo = _pageNo }))
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

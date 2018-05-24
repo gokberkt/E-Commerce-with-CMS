@@ -1,0 +1,90 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>Upbond - Responsive Admin Dashboard Template</title>
+    <meta content="Admin Dashboard" name="description" />
+    <meta content="ThemeDesign" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="shortcut icon" href="~/Areas/Admin/Contents/images/favicon.ico">
+    <link href="~/Areas/Admin/Contents/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Areas/Admin/Contents/css/icons.css" rel="stylesheet" type="text/css">
+    <link href="~/Areas/Admin/Contents/css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!-- Begin page -->
+    <div class="accountbg"></div>
+    <div class="wrapper-page">
+        <div class="panel panel-color panel-primary panel-pages">
+            <div class="panel-body">
+                <h3 class="text-center m-t-0 m-b-15">
+                    <a href="index.html" class="logo logo-admin"><img src="~/Areas/Admin/Contents/images/logo_dark.png" height="28" alt="logo"></a>
+                </h3>
+                <h4 class="text-muted text-center m-t-0"><b>Kayıt Ol</b></h4>
+                <form class="form-horizontal m-t-20" method="post" action="">
+                    @Html.AntiForgeryToken()
+                    <div class="col-md-12">
+                        @if (ViewBag.Error != null)
+                        {
+                            <div class="alert alert-danger">@ViewBag.Error</div>
+                        }
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <input class="form-control" type="email" name="Email" required placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <input class="form-control" type="text" name="Name" required placeholder="Ad">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <input class="form-control" type="text" name="Lastname" required placeholder="Soyad">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <input class="form-control" type="password" name="Password" required placeholder="Şifre">
+                        </div>
+                    </div>
+                    <div class="form-group text-center m-t-40">
+                        <div class="col-xs-12">
+                            <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Kayıt Ol</button>
+                        </div>
+                    </div>
+                    <div class="form-group m-t-30 m-b-0">
+                        <div class="col-sm-12 text-center">
+                            <a href="/admin/admin/login" class="text-muted">Hesabınız varsa giriş yapın.</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery  -->
+    <script src="~/Areas/Admin/Contents/js/jquery.min.js"></script>
+    <script src="~/Areas/Admin/Contents/js/bootstrap.min.js"></script>
+    <script src="~/Areas/Admin/Contents/js/modernizr.min.js"></script>
+    <script src="~/Areas/Admin/Contents/js/detect.js"></script>
+    <script src="~/Areas/Admin/Contents/js/fastclick.js"></script>
+    <script src="~/Areas/Admin/Contents/js/jquery.slimscroll.js"></script>
+    <script src="~/Areas/Admin/Contents/js/jquery.blockUI.js"></script>
+    <script src="~/Areas/Admin/Contents/js/waves.js"></script>
+    <script src="~/Areas/Admin/Contents/js/wow.min.js"></script>
+    <script src="~/Areas/Admin/Contents/js/jquery.nicescroll.js"></script>
+    <script src="~/Areas/Admin/Contents/js/jquery.scrollTo.min.js"></script>
+    <script src="~/Areas/Admin/Contents/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+﻿
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model Admins
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <form class="form-horizontal" method="post" action="">
+                    <h4 class="m-t-0 m-b-30">Admin Düzenle</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel panel-default">
+                                <div class="panel-body" style="border: 1px solid #e2e2e2;">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Ad</label>
+                                        <div class="col-md-10">
+                                            <input name="Name" type="text" spellcheck="false" class="form-control" placeholder="Ad" value="@Model.Name">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Soyad</label>
+                                        <div class="col-md-10">
+                                            <input name="Lastname" type="text" spellcheck="false" class="form-control" placeholder="Soyad" value="@Model.Lastname">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">E-Posta</label>
+                                        <div class="col-md-10">
+                                            <input name="Email" type="text" spellcheck="false" class="form-control" placeholder="E-Posta" value="@Model.Email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Admin Durumu</label>
+                                        <div class="col-md-10">
+                                            <select name="Status" class="form-control">
+                                                <option @if (Model.Status == true) { @Html.Raw("selected") } value="true">Aktif</option>
+                                                <option @if (Model.Status == false) { @Html.Raw("selected") } value="false">Pasif</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button name="submit" type="submit" class="btn btn-success pull-right"><b>Güncelle</b></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

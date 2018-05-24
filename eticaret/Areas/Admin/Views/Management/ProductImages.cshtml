@@ -1,0 +1,48 @@
+﻿
+@{
+    Layout = null;
+}
+@model List<ProductImages>
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+
+@if (Model.Count==0)
+{
+    <div class="alert alert-danger text-center">Henüz hiç fotoğraf yüklenmemiş.</div>
+}
+@foreach (ProductImages item in Model)
+{
+<div class="col-md-3 col-xs-6">
+    <img src="@item.ImagePath" class="img-thumbnail" style="max-height:400px;width:100%" />
+    <div style="text-align:center;margin-top:15px;">
+        <a href="javascript:DeleteImg('@item.ID')" data-toggle="tooltip" title="Fotoğrafı Sil" class="btn btn-danger"><i class="fa fa-remove"></i></a>
+    </div>
+    <div class="clearfix"></div>
+</div>
+}    
+
+<script>
+
+    function DeleteImg(id) {
+        $.post("/Admin/Management/DeleteProductImage/" + id, null, function (data) {
+            if (data == "1") {
+                $("#ImageDeleteSuccess").slideDown();
+                LoadProductImages();
+                setTimeout(function () {
+                    $("#ImageDeleteSuccess").slideUp();
+                }, 2500);
+                
+            } else {
+                $("#ImageDeleteFail").slideDown();
+                setTimeout(function () {
+                    $("#ImageDeleteFail").slideUp();
+                }, 3000);
+            }
+        })
+    }
+</script>

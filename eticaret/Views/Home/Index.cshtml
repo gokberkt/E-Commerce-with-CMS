@@ -1,0 +1,120 @@
+﻿@model IEnumerable<Products>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ Html.RenderAction("Carousel", "Home"); }
+
+@{ Html.RenderAction("FeaturesBlock", "Home"); }
+
+
+<section class="ptb-50 ptb-xs-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-8">
+                <div class="product-slider mb-40">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="">
+                                <div id="tabs" class="category-bar mb-20 p-0">
+                                    <ul class="tab-stap">
+                                        <li><a class="tab-step1 selected" title="step1">İlginizi Çekebilir</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="featured-product">
+                        <div class="items">
+                            <div class="tab_content pro_cat">
+                                <ul>
+                                    <li>
+                                        <div id="data-step1" class="items-step1 selected product-slider-main position-r" data-temp="tabdata">
+                                            <div class="row mlr_-20">
+                                                @foreach (var item in Model.OrderBy(x => Guid.NewGuid()).Take(6))
+                                                {
+                                                    <div class="col-md-4 col-xs-6 plr-20">
+                                                        <div class="product-item">
+                                                            <div class="product-image">
+                                                                <a href="/urunler/urun-detay/@item.seoUrl-@item.ID"> <img src="@item.Photo"> </a>
+                                                                <div class="product-detail-inner">
+                                                                    <div class="detail-inner-left left-side">
+                                                                        <ul>
+                                                                            <li class="pro-cart-icon">
+                                                                                <form>
+                                                                                    <button title="Sepete Ekle" type="button" onclick="AddBag('@item.ID','1')"></button>
+                                                                                </form>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="product-item-details">
+                                                                <div class="product-item-name"> <a href="/urunler/urun-detay/@item.seoUrl-@item.ID">@item.Name</a> </div>
+                                                                <div class="price-box">
+                                                                    <span class="price">@string.Format("{0:C}", item.Price)</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-slider">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="heading-part mb-20">
+                                <h2 class="main_title">Çok Satanlar</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="position-r">
+                            <!-- dresses -->
+                            <div class="owl-carousel pro_cat_slider">
+                                <!-- id="product-slider" -->
+                                @foreach (var item in Model.OrderByDescending(x => x.NumberOfSales))
+                                {
+                                    <div class="item">
+                                        <div class="product-item">
+                                            <div class="product-image">
+                                                <a href="/urunler/urun-detay/@item.seoUrl-@item.ID"><img src="@item.Photo"> </a>
+                                                <div class="product-detail-inner">
+                                                    <div class="detail-inner-left left-side">
+                                                        <ul>
+                                                            <li class="pro-cart-icon">
+                                                                <form>
+                                                                    <button title="Sepete Ekle" type="button" onclick="AddBag('@item.ID','1')"></button>
+                                                                </form>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-item-details">
+                                                <div class="product-item-name"> <a href="/urunler/urun-detay/@item.seoUrl-@item.ID">@item.Name</a> </div>
+                                                <div class="price-box">
+                                                    <span class="price">@string.Format("{0:C}", item.Price)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
