@@ -17,15 +17,15 @@ Feel free to contact me via my mail address -> gokberk.92@hotmail.com
 
 --------------------------------------------------------------------------------------
 
-Basit bir yönetim paneline sahip basit bir e-ticaret sitesi projesi.
+Basit bir yÃ¶netim paneline sahip basit bir e-ticaret sitesi projesi.
 
-"Database First" modelinde çalýþtýðým için veritabanýnýn güncel bir yedeðini klasör içine koydum.
+"Database First" modelinde Ã§alÄ±ÅŸtÄ±ÄŸÄ±m iÃ§in veritabanÃ½nÃ½n gÃ¼ncel bir yedeÃ°ini klasÃ¶r iÃ§ine koydum.
 
-Projeyi çalýþýr hale getirmek için öncelikle bu yedek dosyasýný kendi veritabanýnýza eklemeniz gerekmektedir.
+Projeyi Ã§alÃ½Ã¾Ã½r hale getirmek iÃ§in Ã¶ncelikle bu yedek dosyasÃ½nÃ½ kendi veritabanÃ½nÃ½za eklemeniz gerekmektedir.
 
-Daha sonra web.config içindeki connection stringi düzenlemelisiniz.
+Daha sonra web.config iÃ§indeki connection stringi dÃ¼zenlemelisiniz.
 
-Vakit darlýðýndan ötürü yazdýðým kodlara satýr satýr açýklama yazamadým ancak çok karmaþýk olmadýklarýný ve
-kolayca anlaþýlabileceklerini düþünüyorum.
+Vakit darlÃ½Ã°Ã½ndan Ã¶tÃ¼rÃ¼ yazdÃ½Ã°Ã½m kodlara satÃ½r satÃ½r aÃ§Ã½klama yazamadÃ½m ancak Ã§ok karmaÃ¾Ã½k olmadÃ½klarÃ½nÃ½ ve
+kolayca anlaÃ¾Ã½labileceklerini dÃ¼Ã¾Ã¼nÃ¼yorum.
 
-Herhangi bir sorun yaþarsýnýz mail adresim üzerimden benimle iletiþime geçebilirsiniz -> gokberk.92@hotmail.com
+Herhangi bir sorun yaÃ¾arsÃ½nÃ½z mail adresim Ã¼zerimden benimle iletiÃ¾ime geÃ§ebilirsiniz -> gokberk.92@hotmail.com
