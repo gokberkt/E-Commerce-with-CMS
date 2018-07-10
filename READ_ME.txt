@@ -19,13 +19,13 @@ Feel free to contact me via my mail address -> gokberk.92@hotmail.com
 
 Basit bir yönetim paneline sahip basit bir e-ticaret sitesi projesi.
 
-"Database First" modelinde çalıştığım için veritabanýnýn güncel bir yedeðini klasör içine koydum.
+"Database First" modelinde çalıştığım için veritabanının güncel bir yedeğini klasör içine koydum.
 
-Projeyi çalýþýr hale getirmek için öncelikle bu yedek dosyasýný kendi veritabanýnýza eklemeniz gerekmektedir.
+Projeyi çalışır hale getirmek için öncelikle bu yedek dosyasını kendi veritabanınıza eklemeniz gerekmektedir.
 
 Daha sonra web.config içindeki connection stringi düzenlemelisiniz.
 
-Vakit darlýðýndan ötürü yazdýðým kodlara satýr satýr açýklama yazamadým ancak çok karmaþýk olmadýklarýný ve
-kolayca anlaþýlabileceklerini düþünüyorum.
+Vakit darlığından ötürü yazdığım kodlara satır satır açıklama yazamadım ancak çok karmaşıkk olmadıklarını ve
+kolayca anlaşılabileceklerini düşünüyorum.
 
-Herhangi bir sorun yaþarsýnýz mail adresim üzerimden benimle iletiþime geçebilirsiniz -> gokberk.92@hotmail.com
+Herhangi bir sorun yaşarsanız mail adresim üzerimden benimle iletişime geçebilirsiniz -> gokberk.92@hotmail.com
